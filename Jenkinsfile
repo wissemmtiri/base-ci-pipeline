@@ -3,12 +3,17 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                script {
+                    sh 'npm install'
+                    sh 'npm run build'
+                }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                script {
+                    sh 'npm test'
+                }
             }
         }
         stage('Scan') {
