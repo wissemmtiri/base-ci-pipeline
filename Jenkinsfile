@@ -18,12 +18,17 @@ pipeline {
         }
         stage('Scan') {
             steps {
-                echo 'Scanning..'
+                script {
+                    sh 'npm audit'
+                }
             }
         }
         stage('Upload') {
             steps {
-                echo 'Uploading....'
+                script {
+                    sh 'tar -czvf nest-base.tar.gz dist/'
+                    archiveArtifacts artifacts: 'nest-base.tar.gz'
+                }
             }
         }
     }
