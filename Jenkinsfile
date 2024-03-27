@@ -1,5 +1,7 @@
 pipeline {
-    agent any 
+    agent {
+        image 'node:20.11.1-alpine3.19'
+    }
     stages {
         stage('Build') {
             steps {
@@ -26,8 +28,8 @@ pipeline {
         stage('Upload') {
             steps {
                 script {
-                    sh 'tar -czvf nest-base.tar.gz dist/'
-                    archiveArtifacts artifacts: 'nest-base.tar.gz'
+                    sh 'docker build -t nest-base .'
+                    echo 'Uploading..'
                 }
             }
         }
