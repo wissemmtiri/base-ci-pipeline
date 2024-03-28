@@ -3,7 +3,7 @@ pipeline {
   
     tools {
         nodejs "recent node"
-        DockerTool 'docker'
+        dockerTool 'docker'
     }
     
   
