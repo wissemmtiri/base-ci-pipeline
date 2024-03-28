@@ -33,8 +33,8 @@ pipeline {
         stage('Upload') {
             steps {
                 script {
-                    sh 'docker build -t nest-base .'
                     echo 'Uploading..'
+                    sh 'service docker status'
                 }
             }
         }
