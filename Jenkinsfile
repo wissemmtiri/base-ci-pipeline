@@ -1,25 +1,21 @@
 pipeline {
     agent any
-  
-    tools {
-        nodejs "recent node"
-        dockerTool 'docker'
-    }
     
-  
     stages {
         stage('Build') {
             steps {
                 script {
-                    sh 'npm install'
-                    sh 'npm run build'
+                    echo 'Building..'
+                    bat 'npm install'
+                    bat 'npm run build'
                 }
             }
         }
         stage('Test') {
             steps {
                 script {
-                    sh 'npm test'
+                    echo 'Testing..'
+                    bat 'npm test'
                 }
             }
         }
@@ -34,7 +30,7 @@ pipeline {
             steps {
                 script {
                     echo 'Uploading..'
-                    sh 'service docker status'
+                    bat 'docker build -t base-nest .'
                 }
             }
         }
