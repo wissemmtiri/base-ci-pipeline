@@ -3,7 +3,7 @@ pipeline {
   
     tools {
         nodejs "recent node"
-        dockerTool "docker"
+        'org.jenkinsci.plugins.docker.commons.tools.DockerTool' '18.09'
     }
     
   
