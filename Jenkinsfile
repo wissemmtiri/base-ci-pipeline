@@ -3,7 +3,7 @@ pipeline {
   
     tools {
         nodejs "recent node"
-        'org.jenkinsci.plugins.docker.commons.tools.DockerTool' 'docker'
+        DockerTool 'docker'
     }
     
   
@@ -33,7 +33,7 @@ pipeline {
         stage('Upload') {
             steps {
                 script {
-                    bat 'docker build -t nest-base .'
+                    sh 'docker build -t nest-base .'
                     echo 'Uploading..'
                 }
             }
